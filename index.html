@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 *{
@@ -213,6 +213,11 @@ header .bottom_header .category_nav .category_nav_list{
     border-top: 0;
     display: flex;
     flex-direction: column;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: 0.3s ease-in-out;
+}
+header .bottom_header .category_nav .category_nav_list.active{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 header .bottom_header .category_nav .category_nav_list a{
     padding: 14px 10px;
@@ -290,7 +295,7 @@ header .bottom_header .nav_links li:active a{
             <div class="container">
                 <nav class="nav">
                     <div class="category_nav">
-                        <div class="category_btn">
+                        <div onclick="Open_categ_list()" class="category_btn">
                             <i class="fa-solid fa-bars"></i>
                             <p>Browse Category</p>
                             <i class="fa-solid fa-arrow-down"></i>
@@ -321,7 +326,11 @@ header .bottom_header .nav_links li:active a{
     </header>
 
     <script>
-        // document.write("hello world")
+        let  category_nav_list = document.querySelector(".category_nav_list");
+
+        function Open_categ_list(){
+            category_nav_list.classList.toggle("active")
+        }
     </script>
 </body>
 </html>
