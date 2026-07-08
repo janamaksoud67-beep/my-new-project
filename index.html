@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Document</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
@@ -15,6 +15,7 @@
     list-style: none;
     text-decoration: none;
     font-family: "inter", sans-serif;
+    color: var(--color_heading);
 }
 :root{
     --main_color : #ff8716;
@@ -42,6 +43,26 @@ input,select,button{
     border: none;
     outline: none;
 }
+.btns{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.btn{
+    padding: 10px 20px;
+    text-transform: capitalize;
+    border-radius: 2px;
+    cursor: pointer;
+    background: var(--main_color);
+    color: var(--white_color);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transition: 0.3s;
+}
+.btn:hover{
+    scale: 1.1;
+}
 .container{
     width: 90%;
     margin: auto;
@@ -60,6 +81,7 @@ header{
     top: 0;
     left: 0;
     right: 0;
+    box-shadow: 5px 8px 8px #d1d1d13b;
 }
 header .top_header .container{
     display: flex;
@@ -83,11 +105,11 @@ header .top_header .search_box input{
     padding: 5px 15px 5px 10px;
     background: var(--bg_color);
 }
-header .top_header .search_box select_box{
+header .top_header .search_box .select_box{
     position: relative;
 
 }
-header .top_header .search_box select_box::after{
+header .top_header .search_box .select_box::after{
     content: '';
     position: absolute;
     top: 50%;
@@ -144,18 +166,89 @@ header .top_header .header_icons .icon .count{
     border-radius: 100%;
 }
 header .bottom_header{
-border-top: 1px solid var(--border_color);
+    border-top: 1px solid var(--border_color);
 }
-
-
+header .bottom_header .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header .bottom_header nav{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    height: 60px;
+}
+header .bottom_header .category_nav{
+    width: 220px;
+    position: relative;
+    height: 100%;
+}
+header .bottom_header .category_nav .category_btn{
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--main_color);
+    padding: 0;
+    cursor: pointer;
+}
+header .bottom_header .category_nav .category_btn p{
+    color: var(--white_color);
+    font-weight: 600;
+    font-size: 15px;
+}
+header .bottom_header .category_nav .category_btn i{
+    color: var(--white_color);
+}
+header .bottom_header .category_nav .category_nav_list{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--white_color);
+    width: 100%;
+    border: 1px solid #999;
+    border-top: 0;
+    display: flex;
+    flex-direction: column;
+}
+header .bottom_header .category_nav .category_nav_list a{
+    padding: 14px 10px;
+    border-bottom: 1px solid var(--border_color);
+    font-size: 14px;
+}
+header .bottom_header .category_nav .category_nav_list a:last-of-type{
+    border-bottom: 0;
+}
+header .bottom_header .category_nav .category_nav_list a:hover{
+    background: #d0d0d0;
+}
+/*
+to here   
+*/
+header .bottom_header .nav_links{
+    display: flex;
+    gap: 35px;
+}
+header .bottom_header .nav_links li a{
+    transition: 0.3s;
+    color: var(--color_heading);
+}
+header .bottom_header .nav_links li:hover a,
+header .bottom_header .nav_links li:active a{
+    color:var(--main_color);
+}
     </style>
 </head>
 <body>
-
     <header>
         <div class="top_header">
             <div class="container">
-                <a href="#" class="logo"> <img src="../images/store-icon-logo-illustration-vector.jpg" alt=""> </a>
+                <a href="#" class="logo"> 
+                    <img src="../images/store-icon-logo-illustration-vector.jpg" alt=""> 
+                </a>
 
                 <form action="" class="search_box">
                     <div class="select_box">
@@ -170,12 +263,12 @@ border-top: 1px solid var(--border_color);
                             <option value="Toys & Hobbies">Toys & Hobbies</option>
                         </select>
                     </div>
-
                     <input type="text" name="Search" id="Search" placeholder="Search for products" required>
                     <button type="submit">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </form>
+
                 <div class="header_icons">
                     <div class="icon">
                         <a href="#">
@@ -184,37 +277,49 @@ border-top: 1px solid var(--border_color);
                         </a>
                     </div>
                     <div class="icon">
-                            <i class="fa-solid fa-cart-arrow-down"></i>
+                        <a href="#">
+                            <i class="fa-solid fa-cart-shopping"></i>
                             <span class="count count_item_header">0</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="bottom_header">
+            <div class="container">
+                <nav class="nav">
+                    <div class="category_nav">
+                        <div class="category_btn">
+                            <i class="fa-solid fa-bars"></i>
+                            <p>Browse Category</p>
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </div>
+                        <div class="category_nav_list">
+                            <a href="#">Top 10 offers</a>
+                            <a href="#">Electonics & Digits</a>
+                            <a href="#">Phones & Tablet</a>
+                            <a href="#">Fashion & Clotings</a>
+                            <a href="#">Televsion & Monitor</a>
+                            <a href="#">Jewelry & Watches</a>
+                            <a href="#">Toys & Hobbies</a>
+                        </div>
+                    </div>
+                    <ul class="nav_links">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="login_signup btns">
+                    <a href="#" class="btn">Login <i class="fa-solid fa-right-to-bracket"></i></a>
+                    <a href="#" class="btn">Sign Up <i class="fa-solid fa-user-plus"></i></a>
+                </div>
+            </div>
+        </div>
     </header>
-<div class="bottom_header">
-<div class="container">
-<nav class="nav">
-<div class="Category_nav">
-<div class="Category_btn">
-<i class="fa-solid fa-bars"></i>
-<p>Browse Category</p>
-<i class="fa-solid fa-arrow-down"></i>
-</div>	 
-</div>
-<ul class="nav_links">
-<li class="active"><a href="#">Home</a></li>
-<li><a href="#"></a></li>
-<li><a href="#"></a></li>
-<li><a href="#"></a></li>
-<li><a href="#"></a></li>
-</ul>
-</nav>
-<div class="login_signup btns">
-<a href="#" class="btn">Login <i class="fa-solid fa-right-to-bracket"></i></a>
-<a href="#" class="btn">Sign Up <i class="fa-solid fa-user-plus"></i></a>
-</div>
-</div>
-</div>		
+
     <script>
         // document.write("hello world")
     </script>
